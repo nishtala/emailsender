@@ -5,7 +5,7 @@
 #send emails while on vacation
 
 #Credits to SO for a large part of the code
-
+from sys import exit
 import os
 import paramiko
 import argparse
@@ -68,6 +68,8 @@ def main(args):
                 FILENAMES.remove(filename)
             except IOError as IE:
                 pass
+        if not FILENAMES:
+            exit('done')
 
 
 if __name__ == '__main__':
