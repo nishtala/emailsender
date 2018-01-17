@@ -65,6 +65,7 @@ def main(args):
                 filestat=sftp.stat(remotepath)
                 subject, body = email_content(filename, remotepath)
                 send_email(gmail_user, gmail_pass, email, subject, body)
+                FILENAMES.remove(filename)
             except IOError as IE:
                 pass
 
