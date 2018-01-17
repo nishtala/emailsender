@@ -61,12 +61,12 @@ def main(args):
     while True:
         sleep(60*30) #30minutes sleep interval
         for filename in FILENAMES:
-        try:
-            filestat=sftp.stat(remotepath)
-            subject, body = email_content(filename, remotepath)
-            send_email(gmail_user, gmail_pass, email, subject, body)
-        except IOError as IE:
-            pass
+            try:
+                filestat=sftp.stat(remotepath)
+                subject, body = email_content(filename, remotepath)
+                send_email(gmail_user, gmail_pass, email, subject, body)
+            except IOError as IE:
+                pass
 
 
 if __name__ == '__main__':
