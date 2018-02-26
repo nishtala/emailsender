@@ -35,10 +35,10 @@ def send_email(user, pwd, recipient, subject, body):
     except:
         print "failed to send mail"
 
-def email_content(FILE_NAME, remote_path):
+def email_content(FILE_NAME):
     subject = 'Results for ' + FILE_NAME
-    body    = "Hi Paul,\n"
-    body    = body + "Please find attached the results for " + FILE_NAME + ' in ' + remote_path + "\n"
+    body    = "Hey,\n"
+    body    = body + "Please find attached the results in " + FILE_NAME 
     body    = body + "Best wishes,\n"
     body    = body + "Rajiv\n"
     body    = body + "This is an automated email from a Python mail client."
@@ -62,8 +62,8 @@ def main(args):
         sleep(60*30) #30minutes sleep interval
         for filename in FILENAMES:
             try:
-                filestat=sftp.stat(remotepath)
-                subject, body = email_content(filename, remotepath)
+                filestat=sftp.stat(filename)
+                subject, body = email_content(filename)
                 send_email(gmail_user, gmail_pass, email, subject, body)
                 FILENAMES.remove(filename)
             except IOError as IE:
