@@ -69,7 +69,7 @@ def main(args, gmail_pass):
             OLD_P_JOBS = NEW_P_JOBS
             subject, body = email_content(JOB_STARTED, str(args.check[0]))
             send_email(gmail_user, gmail_pass, email, subject, body)
-        time.sleep(60*30) # poll every twenty minutes
+        time.sleep(60*20) # poll every twenty minutes
 
 if __name__ == '__main__':
     gmail_pass = getpass.getpass('Password:')
