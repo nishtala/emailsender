@@ -45,8 +45,8 @@ def email_content(job_started, check):
         subject = "started this job " + str(job_started)
         body    = "started this job " + str(job_started) + "\n"
     if check == 'running':
-        subject = "finished running job " + str(job_started)
-        body    = "finished running job " + str(job_started) + "\n"
+        subject = "finished/running job " + str(job_started)
+        body    = "finished/running (depending on poll interval) job " + str(job_started) + "\n"
     body    = body + "This is an automated email from a Python mail client."
     return subject, body
 
@@ -69,7 +69,7 @@ def main(args, gmail_pass):
             OLD_P_JOBS = NEW_P_JOBS
             subject, body = email_content(JOB_STARTED, str(args.check[0]))
             send_email(gmail_user, gmail_pass, email, subject, body)
-        time.sleep(60*20) # poll every twenty minutes
+        time.sleep(60*5) # poll every fiveminutes
 
 if __name__ == '__main__':
     gmail_pass = getpass.getpass('Password:')
